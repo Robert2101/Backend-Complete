@@ -38,4 +38,13 @@ const updateProduct = async (req,res)=>{
     }
 }
 
-export {createProduct,deleteProduct, updateProduct};
+
+const getProducts = async (req, res) => {
+    try {
+        const products = await Product.find();
+        res.status(200).json(products);
+    } catch (err) {     
+        res.status(500).json({ error: err.message });
+    }
+}
+export {createProduct,deleteProduct, updateProduct,getProducts};
